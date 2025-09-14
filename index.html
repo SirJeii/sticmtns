@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STI College Marikina | Tagisan ng Sining 2025 (Local Entry)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sti-blue': '#3B82F6', // Lighter Blue
+                        'sti-yellow': '#FFCD00',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfae;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-color: #3B82F6;
+            background-image: 
+                linear-gradient(to bottom, rgba(59, 130, 246, 0.8), rgba(29, 78, 216, 1)),
+                url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden; /* This will ensure the image corners are rounded */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        .btn-primary {
+            background-color: #3B82F6;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #2563EB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold font-display text-sti-blue">STI College Marikina | Tagisan ng Sining</h1>
+            <a href="#register" class="hidden md:inline-block px-6 py-2 font-bold text-white bg-sti-blue rounded-full hover:bg-blue-600 transition-colors">Register Now!</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-24 md:py-32 text-center">
+                <h2 class="text-4xl md:text-6xl font-black font-display mb-4 leading-tight">STI College Marikina<br>Tagisan ng Sining 2025</h2>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">Calling all STI College Marikina artists! This is your chance to showcase your talents in our local Tagisan ng Sining. Join now!</p>
+                <a href="#register" class="btn-primary font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wider">Join Now</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl font-bold font-display mb-4">About Tagisan ng Sining - STI College Marikina</h3>
+                <div class="w-24 h-1 bg-sti-yellow mx-auto mb-6"></div>
+                <p class="max-w-4xl mx-auto text-gray-600 leading-relaxed">
+                    Tagisan ng Sining is our annual competition for STIers to showcase their artistic talents. This is the official local entry for STI College Marikina, where the winners will represent our campus in the national competition. It's a celebration of creativity, identity, and the Filipino spirit through various forms of art.
+                </p>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h3 class="text-3xl font-bold font-display text-center mb-12">Competition Categories</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Category Card 1 -->
+                    <div class="card text-center">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=600&auto=format&fit=crop" alt="Photography Contest" class="w-full h-48 object-cover">
+                        <div class="p-8">
+                            <h4 class="text-xl font-bold mb-2">Shutter's Best</h4>
+                            <p class="text-gray-600">Photography Contest: Capture compelling moments and tell a story in a single frame.</p>
+                        </div>
+                    </div>
+                    <!-- Category Card 2 -->
+                    <div class="card text-center">
+                        <img src="https://images.unsplash.com/photo-1604904612715-48bf9d949171?q=80&w=600&auto=format&fit=crop" alt="Short Film Contest" class="w-full h-48 object-cover">
+                        <div class="p-8">
+                            <h4 class="text-xl font-bold mb-2">Director's Cut</h4>
+                            <p class="text-gray-600">Short Film Contest: Bring your vision to life through the art of filmmaking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Registration Section -->
+        <section id="register" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h3 class="text-3xl font-bold font-display text-center mb-4">Register Here!</h3>
+                <div class="text-center my-4 p-3 bg-yellow-100 border-l-4 border-sti-yellow">
+                    <p class="font-semibold text-yellow-800">Please be advised: Registration is open from September 15 to 20, 2025 only.</p>
+                </div>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">Don't miss this chance! Fill out the form below to officially join the STI College Marikina Tagisan ng Sining 2025. We're excited to see your entry!</p>
+                <div class="max-w-4xl mx-auto bg-gray-100 p-4 rounded-lg shadow-inner">
+                    <!-- Embedded Registration Form -->
+                    <div class="aspect-w-4 aspect-h-3">
+                        <iframe class="w-full h-[70vh] rounded-md" src="https://forms.office.com/Pages/ResponsePage.aspx?id=Q97QyABtNEWjxl_CIYWrm8AdkEFPWENHkudfx8eudb1UNEMxVUtDTjlPQ0lCVk5JSEJVSDdEWTVVSC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-sti-blue text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400 text-sm">&copy; 2025 STI College Marikina Tagisan ng Sining. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
