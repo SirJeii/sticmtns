@@ -56,15 +56,33 @@
         .btn-primary:hover {
             background-color: #2563EB;
         }
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 300ms, transform 300ms;
+        }
+        .modal-leave {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .modal-leave-active {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 300ms, transform 300ms;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold font-display text-sti-blue">STI College Marikina | Tagisan ng Sining</h1>
-            <a href="#register" class="hidden md:inline-block px-6 py-2 font-bold text-white bg-sti-blue rounded-full hover:bg-blue-600 transition-colors">Register Now!</a>
+            <a href="#register" class="open-modal-trigger hidden md:inline-block px-6 py-2 font-bold text-white bg-sti-blue rounded-full hover:bg-blue-600 transition-colors">Register Now!</a>
         </nav>
     </header>
 
@@ -75,7 +93,7 @@
             <div class="container mx-auto px-6 py-24 md:py-32 text-center">
                 <h2 class="text-4xl md:text-6xl font-black font-display mb-4 leading-tight">STI College Marikina<br>Tagisan ng Sining 2025</h2>
                 <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-200">Calling all STI College Marikina artists! This is your chance to showcase your talents in our local Tagisan ng Sining. Join now!</p>
-                <a href="#register" class="btn-primary font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wider">Join Now</a>
+                <a href="#register" class="open-modal-trigger btn-primary font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wider">Join Now</a>
             </div>
         </section>
 
@@ -117,21 +135,17 @@
         
         <!-- Registration Section -->
         <section id="register" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-6 text-center">
                 <h3 class="text-3xl font-bold font-display text-center mb-4">Register Here!</h3>
                 <div class="text-center my-4 p-3 bg-yellow-100 border-l-4 border-sti-yellow">
                     <p class="font-semibold text-yellow-800">Please be advised: Registration is open from September 15 to 20, 2025 only.</p>
                 </div>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">Don't miss this chance! Fill out the form below to officially join the STI College Marikina Tagisan ng Sining 2025. We're excited to see your entry!</p>
-                <div class="max-w-4xl mx-auto bg-gray-100 p-4 rounded-lg shadow-inner">
-                    <!-- Embedded Registration Form -->
-                    <div class="aspect-w-4 aspect-h-3">
-                        <iframe class="w-full h-[70vh] rounded-md" src="https://forms.office.com/Pages/ResponsePage.aspx?id=Q97QyABtNEWjxl_CIYWrm8AdkEFPWENHkudfx8eudb1UNEMxVUtDTjlPQ0lCVk5JSEJVSDdEWTVVSC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
-                    </div>
-                </div>
+                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">Don't miss this chance! Click the button below to officially join the STI College Marikina Tagisan ng Sining 2025. We're excited to see your entry!</p>
+                <button class="open-modal-trigger btn-primary font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wider">
+                    Open Registration Form
+                </button>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
@@ -141,14 +155,71 @@
         </div>
     </footer>
 
+    <!-- Registration Modal -->
+    <div id="registration-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50 modal-enter">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl relative transform transition-all">
+            <!-- Modal Header -->
+            <div class="p-4 border-b flex justify-between items-center">
+                 <h3 class="text-xl font-bold font-display text-sti-blue">Official Registration Form</h3>
+                 <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 p-1 rounded-full transition-colors hover:bg-gray-100">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                 </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-1 md:p-4 bg-gray-100">
+                 <iframe class="w-full h-[75vh] rounded-md" src="https://forms.office.com/Pages/ResponsePage.aspx?id=Q97QyABtNEWjxl_CIYWrm8AdkEFPWENHkudfx8eudb1UNEMxVUtDTjlPQ0lCVk5JSEJVSDdEWTVVSC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            </div>
+        </div>
+    </div>
+
     <script>
         lucide.createIcons();
+
+        // Modal Logic
+        const modal = document.getElementById('registration-modal');
+        const modalContent = modal.querySelector('div');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const openModalTriggers = document.querySelectorAll('.open-modal-trigger');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.remove('modal-leave', 'modal-leave-active');
+            modal.classList.add('flex', 'modal-enter');
+            setTimeout(() => modal.classList.add('modal-enter-active'), 10);
+        }
+
+        function closeModal() {
+            modal.classList.remove('modal-enter', 'modal-enter-active');
+            modal.classList.add('modal-leave');
+            setTimeout(() => {
+                modal.classList.add('modal-leave-active');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }, 10);
+        }
+
+        openModalTriggers.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal if overlay is clicked
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal on escape key press
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
 
